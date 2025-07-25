@@ -1,16 +1,21 @@
 name: Deploy app on Airbase
+
 on: push
+
 jobs:
   Airbase-Deploy-Prod:
-    runs-on: ubuntu-24.04
     if: github.ref_name == 'main'
+    runs-on: ubuntu-24.04
+    environment: prod  
     container:
       image: gdssingapore/airbase:cli
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+
       - name: Airbase Build
         run: airbase container build
+
       - name: Airbase Deploy
         shell: bash
         run: |
@@ -22,15 +27,18 @@ jobs:
           echo "PROD app is deployed successfully! Visit [$DYNAMIC_ENVIRONMENT_URL]($DYNAMIC_ENVIRONMENT_URL) to view your app." >> $GITHUB_STEP_SUMMARY
 
   Airbase-Deploy-UAT:
-    runs-on: ubuntu-24.04
     if: github.ref_name == 'uat'
+    runs-on: ubuntu-24.04
+    environment: uat 
     container:
       image: gdssingapore/airbase:cli
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+
       - name: Airbase Build
         run: airbase container build
+
       - name: Airbase Deploy
         shell: bash
         run: |
