@@ -14,7 +14,7 @@ if not check_password():
 
 # endregion <--------- Streamlit Page Configuration --------->
 
-st.title("Streamlit App - UAT")
+st.title("Streamlit App - UAT") # title
 form = st.form(key="form")
 form.subheader("Prompt")
 
