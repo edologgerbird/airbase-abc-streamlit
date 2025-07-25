@@ -22,7 +22,7 @@ jobs:
           echo "${{ secrets.AIRBASE_RC }}" > ~/.airbaserc
           echo "${{ secrets.AIRBASE_ENV_LOCAL_FILE }}" > .env.local
 
-          airbase container deploy --output deploy.env --yes --project "${{ vars.AIRBASE_PROJECT_HANDLE }}" prod
+          airbase container deploy --output deploy.env --yes --project "${{ secrets.AIRBASE_PROJECT_HANDLE }}" uat
           source deploy.env
           echo "PROD app is deployed successfully! Visit [$DYNAMIC_ENVIRONMENT_URL]($DYNAMIC_ENVIRONMENT_URL) to view your app." >> $GITHUB_STEP_SUMMARY
 
@@ -43,8 +43,8 @@ jobs:
         shell: bash
         run: |
           echo "${{ secrets.AIRBASE_RC }}" > ~/.airbaserc
-          echo "${{ secrets.AIRBASE_ENV_LOCAL_FILE }}" > .env.local
+          echo "${{ vars.AIRBASE_ENV_LOCAL_FILE }}" > .env.local
 
-          airbase container deploy --output deploy.env --yes --project "${{ vars.AIRBASE_PROJECT_HANDLE }}" uat
+          airbase container deploy --output deploy.env --yes --project "${{ secrets.AIRBASE_PROJECT_HANDLE }}" abc
           source deploy.env
           echo "UAT app is deployed successfully! Visit [$DYNAMIC_ENVIRONMENT_URL]($DYNAMIC_ENVIRONMENT_URL) to view your app." >> $GITHUB_STEP_SUMMARY
