@@ -5,7 +5,7 @@ from utility import check_password
 
 st.set_page_config(
     layout="centered",
-    page_title="My Streamlit App"
+    page_title="My Streamlit App - UAT"
 )
 
 # Do not continue if valid_password is not True.
@@ -14,7 +14,7 @@ if not check_password():
 
 # endregion <--------- Streamlit Page Configuration --------->
 
-st.title("Streamlit App")
+st.title("Streamlit App - UAT")
 form = st.form(key="form")
 form.subheader("Prompt")
 
